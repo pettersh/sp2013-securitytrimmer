@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pzl.SecurityTrimmer", "Pzl.SecurityTrimmer\Pzl.SecurityTrimmer.csproj", "{CA883E1B-C8B3-43DD-BA38-D5B2A7813A40}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Lib", "Lib", "{1F84B78A-4D4D-4102-BBF3-AECCF8025E05}"
+	ProjectSection(SolutionItems) = preProject
+		Lib\Microsoft.IdentityModel.dll = Lib\Microsoft.IdentityModel.dll
+		Lib\Microsoft.Office.Server.dll = Lib\Microsoft.Office.Server.dll
+		Lib\Microsoft.Office.Server.Search.dll = Lib\Microsoft.Office.Server.Search.dll
+		Lib\Microsoft.SharePoint.dll = Lib\Microsoft.SharePoint.dll
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CA883E1B-C8B3-43DD-BA38-D5B2A7813A40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA883E1B-C8B3-43DD-BA38-D5B2A7813A40}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA883E1B-C8B3-43DD-BA38-D5B2A7813A40}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA883E1B-C8B3-43DD-BA38-D5B2A7813A40}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
