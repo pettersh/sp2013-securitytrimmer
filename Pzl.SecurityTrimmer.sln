@@ -13,8 +13,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Lib", "Lib", "{1F84B78A-4D4
 		Lib\Microsoft.SharePoint.dll = Lib\Microsoft.SharePoint.dll
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pzl.SecurityTrimmer.Test", "Pzl.SecurityTrimmer.Test\Pzl.SecurityTrimmer.Test.csproj", "{31FCDA98-28DA-4E8D-92B7-AFBBC5EF8275}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,10 +23,6 @@ Global
 		{CA883E1B-C8B3-43DD-BA38-D5B2A7813A40}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CA883E1B-C8B3-43DD-BA38-D5B2A7813A40}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CA883E1B-C8B3-43DD-BA38-D5B2A7813A40}.Release|Any CPU.Build.0 = Release|Any CPU
-		{31FCDA98-28DA-4E8D-92B7-AFBBC5EF8275}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{31FCDA98-28DA-4E8D-92B7-AFBBC5EF8275}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{31FCDA98-28DA-4E8D-92B7-AFBBC5EF8275}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{31FCDA98-28DA-4E8D-92B7-AFBBC5EF8275}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
