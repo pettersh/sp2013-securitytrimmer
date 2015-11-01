@@ -1,2 +1,2 @@
-# sp2013-securitytrimmer
-SharePoint 2013 Security Trimming Example/Demo European SharePoint Conference 2015
+# ADFS Security Trimmer Example
+This is an example implementation of a custom security trimmer. The example was made for my European SharePoint Conference 2015 session named [Hybrid Search Bonanza - Cloud SSA vs Custom Claims Provider and Security Trimmer|http://www.sharepointeurope.com/conferences/session/445/hybrid-search-bonanza--cloud-ssa-vs-custom-claims-provider-and-security-trimmer-level-400]
