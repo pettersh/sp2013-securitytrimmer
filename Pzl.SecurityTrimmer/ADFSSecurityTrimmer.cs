@@ -5,6 +5,7 @@ using Microsoft.SharePoint.Administration.Claims;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.Data.SqlClient;
 using System.Security.Principal;
 
 namespace Pzl.SecurityTrimmer
@@ -18,9 +19,9 @@ namespace Pzl.SecurityTrimmer
         // Trusted Provider name
         private string _claimIssuer = SPOriginalIssuers.Format(SPOriginalIssuerType.TrustedProvider, "ADFS");
 
-        // The user repository
-        private static IUserRepository _users;
-
+        // SQL connection
+        private string _connectionString;
+        
         /// <summary>
         /// Initialize the custom security trimmer
         /// </summary>
@@ -28,15 +29,13 @@ namespace Pzl.SecurityTrimmer
         /// <param name="searchApplication">Search Service Application instance</param>
         public void Initialize(NameValueCollection properties, SearchServiceApplication searchApplication)
         {
-            if (null != properties.Get("claimIssuer"))
+            if (properties.Get("connectionString") != null)
             {
-                _claimIssuer = SPOriginalIssuers.Format(SPOriginalIssuerType.TrustedProvider,
-                    properties.Get("claimIssuer"));
+                _connectionString = properties.Get("connectionString");
             }
-
-            if (_users == null)
+            else
             {
-                _users = new DBUserRepository(properties);
+                throw new ArgumentException("Missing property \"connectionString\"");
             }
         }
 
@@ -64,7 +63,7 @@ namespace Pzl.SecurityTrimmer
                 {
                     // Lookup the external id for current user and create an external identity claim using
                     // http://schemas.xmlsoap.org/ws/2005/05/identity/claims/privatepersonalidentifier
-                    var externalId = _users.Lookup(claim.Value);
+                    var externalId = Lookup(claim.Value);
                     if (null != externalId)
                     {
                         var pidClaim = new Claim(ClaimTypes.PPID, externalId, ClaimValueTypes.String, _claimIssuer);
@@ -88,6 +87,39 @@ namespace Pzl.SecurityTrimmer
                 }
             }
             return samlClaims;
+        }
+
+        /// <summary>
+        /// Lookup external id based on CONTOSO sid
+        /// </summary>
+        /// <param name="key">sid</param>
+        /// <returns>external id</returns>
+        public string Lookup(string sid)
+        {
+            string externalId = null;
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(
+                    "SELECT TOP 1 Id from Users WHERE Sid = @Sid AND Domain = 'CONTOSO'", connection))
+                {
+                    command.Parameters.AddWithValue("@Sid", sid);
+                    try
+                    {
+                        connection.Open();                        
+                        SqlDataReader reader = command.ExecuteReader();
+                        if (reader.Read())
+                        {
+                            externalId = reader["Id"].ToString();
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        // Log the event, but don't throw the exception 
+                        // to allow query to continue - with to few claims (potentially)
+                    }
+                }
+            }
+            return externalId;
         }
     }
 }
